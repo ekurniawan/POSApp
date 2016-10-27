@@ -16,6 +16,7 @@ namespace POSApp
     public partial class FormPemasok : Form
     {
         private BindingSource bs;
+        private bool isNew = false;
 
         public FormPemasok()
         {
@@ -42,6 +43,20 @@ namespace POSApp
         #endregion
 
         #region Inisialisasi Kontrol
+
+        private void IsiData()
+        {
+            PemasokDAL pemasokDAL = new PemasokDAL();
+
+            bs = new BindingSource();
+            bs.DataSource = pemasokDAL.GetAll();
+            TambahBinding();
+            InisialisasiAwal();
+
+            dgvPemasok.DataSource = bs;
+            isNew = false;
+        }
+
         private void InisialisasiAwal()
         {
             foreach(var ctr in this.Controls)
@@ -60,18 +75,35 @@ namespace POSApp
 
             btnSave.Enabled = false;
         }
+
+        private void InisialisasiNew()
+        {
+            foreach (var ctr in this.Controls)
+            {
+                if (ctr is TextBox)
+                {
+                    var myTxt = ctr as TextBox;
+                    myTxt.Text = string.Empty;
+                    myTxt.Enabled = true;
+                }
+                else if (ctr is Button)
+                {
+                    var myBtn = ctr as Button;
+                    myBtn.Enabled = false;
+                }
+            }
+
+            txtKode.Enabled = false;
+            btnSave.Enabled = true;
+            txtNama.Focus();
+            isNew = true;
+            HapusBinding();
+        }
         #endregion
 
         private void FormPemasok_Load(object sender, EventArgs e)
         {
-            PemasokDAL pemasokDAL = new PemasokDAL();
-
-            bs = new BindingSource();
-            bs.DataSource = pemasokDAL.GetAll();
-            TambahBinding();
-            InisialisasiAwal();
-            
-            dgvPemasok.DataSource = bs;
+            IsiData();
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
@@ -92,6 +124,36 @@ namespace POSApp
         private void btnLast_Click(object sender, EventArgs e)
         {
             bs.MoveLast();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            InisialisasiNew();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            PemasokDAL pemasokDAL = new PemasokDAL();
+            if (isNew)
+            {
+                var newPemasok = new Pemasok
+                {
+                    Nama = txtNama.Text,
+                    Alamat = txtAlamat.Text,
+                    Telp = txtTelp.Text
+                };
+
+                try
+                {
+                    pemasokDAL.Create(newPemasok);
+                    IsiData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
         }
     }
 }
