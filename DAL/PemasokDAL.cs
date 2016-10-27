@@ -52,6 +52,10 @@ namespace DAL
                 {
                     throw new Exception(sqlEx.Message);
                 }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
                 finally
                 {
                     
