@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barang.cs" />
+    <Compile Include="DetailPembelian.cs" />
+    <Compile Include="NotaPembelian.cs" />
+    <Compile Include="Pelanggan.cs" />
+    <Compile Include="Pemasok.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
