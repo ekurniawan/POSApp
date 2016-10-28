@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using BO;
 using DAL;
+using POSApp.Helpers;
 
 namespace POSApp
 {
@@ -25,17 +26,10 @@ namespace POSApp
         }
 
         #region InisialisasiBinding
-        private void HapusBinding()
-        {
-            txtKode.DataBindings.Clear();
-            txtNama.DataBindings.Clear();
-            txtAlamat.DataBindings.Clear();
-            txtTelp.DataBindings.Clear();
-        }
 
         private void TambahBinding()
         {
-            HapusBinding();
+            BindingHelper.HapusBinding(this);
             txtKode.DataBindings.Add("Text", bs, "KodePemasok", true, DataSourceUpdateMode.Never, "", "");
             txtNama.DataBindings.Add("Text", bs, "Nama");
             txtAlamat.DataBindings.Add("Text", bs, "Alamat");

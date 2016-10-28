@@ -16,7 +16,7 @@ namespace POSApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPemasok());
+            Application.Run(new FormBarang());
         }
     }
 }
