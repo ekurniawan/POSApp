@@ -181,7 +181,7 @@ namespace POSApp
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Keterangan", "Error : " + ex.Message, MessageBoxButtons.OK,
+                    MessageBox.Show( "Error : " + ex.Message, "Keterangan", MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
                 
@@ -204,8 +204,10 @@ namespace POSApp
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Keterangan", "Error : " + ex.Message, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show( "Error : " + ex.Message, "Keterangan",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error, 
+                        MessageBoxDefaultButton.Button1);
                 }
             }
         }
@@ -215,5 +217,31 @@ namespace POSApp
             editPemasok = (Pemasok)bs.Current;
             InisialisasiEdit();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            PemasokDAL pemasokDAL = new PemasokDAL();
+            editPemasok = (Pemasok)bs.Current;
+            try
+            {
+                if(MessageBox.Show("Apakah anda yakin mendelete data ini ?",
+                    "Konfirmasi",MessageBoxButtons.YesNo,MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    pemasokDAL.Delete(editPemasok.KodePemasok);
+                    bs.Remove(bs.Current);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message, "Keterangan",
+ 
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error,
+                         MessageBoxDefaultButton.Button1);
+            }
+        }
+
+      
     }
 }

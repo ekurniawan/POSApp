@@ -125,5 +125,74 @@ namespace DAL
                 }
             }
         }
+
+        public void Delete(int kodePemasok)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnString()))
+            {
+                string strSql = @"delete Pemasok where KodePemasok=@KodePemasok";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("KodePemasok", kodePemasok);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Number + " " + sqlEx.Message);
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+        }
+
+        public Pemasok GetById(int kodePemasok)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnString()))
+            {
+                string strSql = @"select * from Pemasok where KodePemasok=@KodePemasok";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("KodePemasok", kodePemasok);
+
+                Pemasok pemasok = null;
+                try
+                {
+                    conn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            pemasok = new Pemasok
+                            {
+                                KodePemasok = Convert.ToInt32(dr["KodePemasok"]),
+                                Nama = dr["Nama"].ToString(),
+                                Alamat = dr["Alamat"].ToString(),
+                                Telp = dr["Telp"].ToString()
+                            };
+                        }
+                    }
+                    dr.Close();
+
+                    return pemasok;
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Number + " " + sqlEx.Message);
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+        }
     }
 }
