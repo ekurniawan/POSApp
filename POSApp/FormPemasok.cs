@@ -35,7 +35,7 @@ namespace POSApp
         private void TambahBinding()
         {
             HapusBinding();
-            txtKode.DataBindings.Add("Text", bs, "KodePemasok");
+            txtKode.DataBindings.Add("Text", bs, "KodePemasok", true, DataSourceUpdateMode.Never, "", "");
             txtNama.DataBindings.Add("Text", bs, "Nama");
             txtAlamat.DataBindings.Add("Text", bs, "Alamat");
             txtTelp.DataBindings.Add("Text", bs, "Telp");
@@ -145,8 +145,14 @@ namespace POSApp
 
                 try
                 {
-                    pemasokDAL.Create(newPemasok);
-                    IsiData();
+                    var result = pemasokDAL.Create(newPemasok);
+                    newPemasok.KodePemasok = result;
+                    bs.Add(newPemasok);
+
+                    TambahBinding();
+                    InisialisasiAwal();
+
+                    //IsiData();
                 }
                 catch (Exception ex)
                 {

@@ -65,12 +65,12 @@ namespace DAL
             }
         }
 
-        public void Create(Pemasok pemasok)
+        public int Create(Pemasok pemasok)
         {
             using (SqlConnection conn = new SqlConnection(GetConnString()))
             {
                 string strSql = @"insert into Pemasok(Nama,Alamat,Telp) 
-                                  values(@Nama,@Alamat,@Telp)";
+                                  values(@Nama,@Alamat,@Telp);select @@identity";
 
                 SqlCommand cmd = new SqlCommand(strSql, conn);
                 cmd.Parameters.Clear();
@@ -81,7 +81,8 @@ namespace DAL
                 try
                 {
                     conn.Open();
-                    cmd.ExecuteNonQuery();
+                    var result = Convert.ToInt32(cmd.ExecuteScalar());
+                    return result;
                 }
                 catch (SqlException sqlEx)
                 {
@@ -94,5 +95,7 @@ namespace DAL
                 }
             }
         }
+
+        
     }
 }
