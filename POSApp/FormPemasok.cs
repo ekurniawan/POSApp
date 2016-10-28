@@ -92,7 +92,7 @@ namespace POSApp
             btnSave.Enabled = true;
             txtNama.Focus();
             isNew = true;
-            HapusBinding();
+            BindingHelper.HapusBinding(this);
         }
 
         private void InisialisasiEdit()
@@ -115,7 +115,7 @@ namespace POSApp
             btnSave.Enabled = true;
             txtNama.Focus();
             isNew = false;
-            HapusBinding();
+            BindingHelper.HapusBinding(this);
         }
         #endregion
 

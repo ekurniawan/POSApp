@@ -30,11 +30,13 @@ namespace POSApp
         private void TambahBinding()
         {
             BindingHelper.HapusBinding(this);
-            txtKode.DataBindings.Add("Text", bs, "KodePemasok");
+            txtKode.DataBindings.Add("Text", bs, "KodeBarang");
             txtNama.DataBindings.Add("Text", bs, "Nama");
-            txtHargaBeli.DataBindings.Add("Text", bs, "HargaBeli");
-            txtHargaJual.DataBindings.Add("Text", bs, "HargaJual");
-            txtJumlah.DataBindings.Add("Text", bs, "Jumlah");
+            txtHargaBeli.DataBindings.Add("Text", bs, "HargaBeli",
+                true,DataSourceUpdateMode.Never,null,"N0");
+            txtHargaJual.DataBindings.Add("Text", bs, "HargaJual",true,
+                DataSourceUpdateMode.Never,null,"N0");
+            txtJumlah.DataBindings.Add("Text", bs, "Stok");
         }
         #endregion
 
@@ -119,5 +121,10 @@ namespace POSApp
             BindingHelper.HapusBinding(this);
         }
         #endregion
+
+        private void FormBarang_Load(object sender, EventArgs e)
+        {
+            IsiData();
+        }
     }
 }

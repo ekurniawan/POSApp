@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -49,6 +52,11 @@
             this.tssKeterangan = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtJumlah = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HargaBeli = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HargaJual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stok = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBarang)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -131,6 +139,7 @@
             this.txtHargaJual.Name = "txtHargaJual";
             this.txtHargaJual.Size = new System.Drawing.Size(143, 20);
             this.txtHargaJual.TabIndex = 26;
+            this.txtHargaJual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtHargaBeli
             // 
@@ -138,6 +147,7 @@
             this.txtHargaBeli.Name = "txtHargaBeli";
             this.txtHargaBeli.Size = new System.Drawing.Size(143, 20);
             this.txtHargaBeli.TabIndex = 25;
+            this.txtHargaBeli.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtNama
             // 
@@ -192,6 +202,12 @@
             // dgvBarang
             // 
             this.dgvBarang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBarang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Kode,
+            this.Nama,
+            this.HargaBeli,
+            this.HargaJual,
+            this.Stok});
             this.dgvBarang.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvBarang.Location = new System.Drawing.Point(0, 205);
             this.dgvBarang.Name = "dgvBarang";
@@ -220,6 +236,7 @@
             this.txtJumlah.Name = "txtJumlah";
             this.txtJumlah.Size = new System.Drawing.Size(55, 20);
             this.txtJumlah.TabIndex = 37;
+            this.txtJumlah.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
@@ -229,6 +246,47 @@
             this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 36;
             this.label5.Text = "Jumlah :";
+            // 
+            // Kode
+            // 
+            this.Kode.DataPropertyName = "KodeBarang";
+            this.Kode.HeaderText = "Kode";
+            this.Kode.Name = "Kode";
+            this.Kode.Width = 80;
+            // 
+            // Nama
+            // 
+            this.Nama.DataPropertyName = "Nama";
+            this.Nama.HeaderText = "Nama";
+            this.Nama.Name = "Nama";
+            this.Nama.Width = 140;
+            // 
+            // HargaBeli
+            // 
+            this.HargaBeli.DataPropertyName = "HargaBeli";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            this.HargaBeli.DefaultCellStyle = dataGridViewCellStyle1;
+            this.HargaBeli.HeaderText = "Harga Beli";
+            this.HargaBeli.Name = "HargaBeli";
+            // 
+            // HargaJual
+            // 
+            this.HargaJual.DataPropertyName = "HargaJual";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.HargaJual.DefaultCellStyle = dataGridViewCellStyle2;
+            this.HargaJual.HeaderText = "Harga Jual";
+            this.HargaJual.Name = "HargaJual";
+            // 
+            // Stok
+            // 
+            this.Stok.DataPropertyName = "Stok";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Stok.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Stok.HeaderText = "Stok";
+            this.Stok.Name = "Stok";
+            this.Stok.Width = 80;
             // 
             // FormBarang
             // 
@@ -257,6 +315,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Name = "FormBarang";
             this.Text = "FormBarang";
+            this.Load += new System.EventHandler(this.FormBarang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBarang)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -288,5 +347,10 @@
         private System.Windows.Forms.ToolStripStatusLabel tssKeterangan;
         private System.Windows.Forms.TextBox txtJumlah;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HargaBeli;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HargaJual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stok;
     }
 }
