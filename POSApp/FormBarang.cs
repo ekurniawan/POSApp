@@ -17,12 +17,13 @@ namespace POSApp
     public partial class FormBarang : Form
     {
         private BindingSource bs;
-        private bool isNew = false; 
+        private bool isNew = false;
+        private Barang currBarang = null;
 
         public FormBarang()
         {
             InitializeComponent();
-            bs = new BindingSource();
+            //dgvBarang.AutoGenerateColumns = false;
         }
 
         #region InisialisasiBinding
@@ -36,7 +37,7 @@ namespace POSApp
                 true,DataSourceUpdateMode.Never,null,"N0");
             txtHargaJual.DataBindings.Add("Text", bs, "HargaJual",true,
                 DataSourceUpdateMode.Never,null,"N0");
-            txtJumlah.DataBindings.Add("Text", bs, "Stok");
+            txtStok.DataBindings.Add("Text", bs, "Stok");
         }
         #endregion
 
@@ -70,12 +71,13 @@ namespace POSApp
                     myBtn.Enabled = true;
                 }
             }
-
             btnSave.Enabled = false;
         }
 
         private void InisialisasiNew()
         {
+            BindingHelper.HapusBinding(this);
+
             foreach (var ctr in this.Controls)
             {
                 if (ctr is TextBox)
@@ -91,15 +93,17 @@ namespace POSApp
                 }
             }
 
-            txtKode.Enabled = false;
+           
             btnSave.Enabled = true;
-            txtNama.Focus();
-            isNew = true;
-            BindingHelper.HapusBinding(this);
+            txtKode.Focus();
+           
+            isNew = true; 
         }
 
         private void InisialisasiEdit()
         {
+            BindingHelper.HapusBinding(this);
+
             foreach (var ctr in this.Controls)
             {
                 if (ctr is TextBox)
@@ -118,13 +122,55 @@ namespace POSApp
             btnSave.Enabled = true;
             txtNama.Focus();
             isNew = false;
-            BindingHelper.HapusBinding(this);
         }
         #endregion
 
         private void FormBarang_Load(object sender, EventArgs e)
         {
             IsiData();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            InisialisasiNew();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            BarangDAL barangDAL = new BarangDAL();
+            if(isNew)
+            {
+                var newBarang = new Barang
+                {
+                    KodeBarang = txtKode.Text,
+                    Nama = txtNama.Text,
+                    HargaBeli = Convert.ToDecimal(txtHargaBeli.Text),
+                    HargaJual = Convert.ToDecimal(txtHargaJual.Text),
+                    Stok = Convert.ToInt32(txtStok.Text)
+                };
+
+                try
+                {
+                    bs.Add(newBarang);
+                    barangDAL.Create(newBarang);
+                    InisialisasiAwal();
+                    TambahBinding();
+
+                    tssKeterangan.Text = string.Format("Berhasil menambah data {0}", 
+                        newBarang.Nama);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error : " + ex.Message, "Keterangan", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            currBarang = (Barang)bs.Current;
+            InisialisasiEdit();
         }
     }
 }
