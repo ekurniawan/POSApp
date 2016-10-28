@@ -99,6 +99,29 @@ namespace POSApp
             isNew = true;
             HapusBinding();
         }
+
+        private void InisialisasiEdit()
+        {
+            foreach (var ctr in this.Controls)
+            {
+                if (ctr is TextBox)
+                {
+                    var myTxt = ctr as TextBox;
+                    myTxt.Enabled = true;
+                }
+                else if (ctr is Button)
+                {
+                    var myBtn = ctr as Button;
+                    myBtn.Enabled = false;
+                }
+            }
+
+            txtKode.Enabled = false;
+            btnSave.Enabled = true;
+            txtNama.Focus();
+            isNew = false;
+            HapusBinding();
+        }
         #endregion
 
         private void FormPemasok_Load(object sender, EventArgs e)
@@ -160,6 +183,11 @@ namespace POSApp
                 }
                 
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            InisialisasiEdit();
         }
     }
 }

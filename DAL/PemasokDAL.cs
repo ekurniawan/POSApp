@@ -96,6 +96,34 @@ namespace DAL
             }
         }
 
-        
+        public void Update(Pemasok pemasok)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnString()))
+            {
+                string strSql = @"update Pemasok set Nama=@Nama,Alamat=@Alamat,
+                                  Telp=@Telp where KodePemasok=@KodePemasok";
+                SqlCommand cmd = new SqlCommand(strSql, conn);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("Nama", pemasok.Nama);
+                cmd.Parameters.AddWithValue("Alamat", pemasok.Alamat);
+                cmd.Parameters.AddWithValue("Telp", pemasok.Telp);
+                cmd.Parameters.AddWithValue("KodePemasok", pemasok.KodePemasok);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new Exception(sqlEx.Number + " " + sqlEx.Message);
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    conn.Close();
+                }
+            }
+        }
     }
 }
