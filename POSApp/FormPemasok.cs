@@ -17,6 +17,7 @@ namespace POSApp
     {
         private BindingSource bs;
         private bool isNew = false;
+        private Pemasok editPemasok;
 
         public FormPemasok()
         {
@@ -175,18 +176,43 @@ namespace POSApp
                     TambahBinding();
                     InisialisasiAwal();
 
+                    tssKeterangan.Text = "Tambah data berhasil !";
                     //IsiData();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Keterangan", "Error : " + ex.Message, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
                 
+            }
+            else
+            {
+                editPemasok.Nama = txtNama.Text;
+                editPemasok.Alamat = txtAlamat.Text;
+                editPemasok.Telp = txtTelp.Text;
+
+                try
+                {
+                    pemasokDAL.Update(editPemasok);
+                    TambahBinding();
+                    InisialisasiAwal();
+                    tssKeterangan.Text = "Data berhasil diupdate !";
+
+                    //pendekatan kedua query data dari tabel
+                    //IsiData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Keterangan", "Error : " + ex.Message, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            editPemasok = (Pemasok)bs.Current;
             InisialisasiEdit();
         }
     }

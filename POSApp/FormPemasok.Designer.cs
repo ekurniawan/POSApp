@@ -45,16 +45,19 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tssKeterangan = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPemasok)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPemasok
             // 
             this.dgvPemasok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPemasok.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvPemasok.Location = new System.Drawing.Point(0, 180);
+            this.dgvPemasok.Location = new System.Drawing.Point(0, 177);
             this.dgvPemasok.Name = "dgvPemasok";
-            this.dgvPemasok.Size = new System.Drawing.Size(461, 207);
+            this.dgvPemasok.Size = new System.Drawing.Size(461, 188);
             this.dgvPemasok.TabIndex = 0;
             // 
             // label1
@@ -200,6 +203,22 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssKeterangan});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 365);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(461, 22);
+            this.statusStrip1.TabIndex = 17;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tssKeterangan
+            // 
+            this.tssKeterangan.Name = "tssKeterangan";
+            this.tssKeterangan.Size = new System.Drawing.Size(118, 17);
+            this.tssKeterangan.Text = "toolStripStatusLabel1";
+            // 
             // FormPemasok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,10 +241,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvPemasok);
+            this.Controls.Add(this.statusStrip1);
             this.Name = "FormPemasok";
             this.Text = "FormPemasok";
             this.Load += new System.EventHandler(this.FormPemasok_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPemasok)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,5 +272,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tssKeterangan;
     }
 }
