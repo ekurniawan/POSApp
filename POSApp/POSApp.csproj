@@ -55,6 +55,12 @@
     <Compile Include="FormBarang.Designer.cs">
       <DependentUpon>FormBarang.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormNotaPembelian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNotaPembelian.Designer.cs">
+      <DependentUpon>FormNotaPembelian.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPelanggan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBarang.resx">
       <DependentUpon>FormBarang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNotaPembelian.resx">
+      <DependentUpon>FormNotaPembelian.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPelanggan.resx">
       <DependentUpon>FormPelanggan.cs</DependentUpon>

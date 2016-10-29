@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarangDAL.cs" />
+    <Compile Include="NotaPembelianDAL.cs" />
     <Compile Include="PelangganDAL.cs" />
     <Compile Include="PemasokDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
