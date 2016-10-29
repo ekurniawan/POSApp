@@ -13,6 +13,7 @@ namespace BO
         public string KodeBarang { get; set; }
         public decimal Harga { get; set; }
         public int Kuantitas { get; set; }
+        public decimal Subtotal { get; set; }
 
         public virtual NotaPembelian NotaPembelian { get; set; }
         public virtual Barang Barang { get; set; }

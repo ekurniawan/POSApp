@@ -62,6 +62,7 @@
             this.dgvPemasok.Name = "dgvPemasok";
             this.dgvPemasok.Size = new System.Drawing.Size(494, 176);
             this.dgvPemasok.TabIndex = 0;
+            this.dgvPemasok.DoubleClick += new System.EventHandler(this.dgvPemasok_DoubleClick);
             // 
             // label1
             // 

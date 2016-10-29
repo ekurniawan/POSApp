@@ -30,6 +30,7 @@ namespace POSApp
         private BindingSource bs;
         private bool isNew = false;
         private Barang currBarang = null;
+        private List<Barang> listBarang;
 
         public FormBarang()
         {
@@ -59,7 +60,8 @@ namespace POSApp
             BarangDAL barangDAL = new BarangDAL();
 
             bs = new BindingSource();
-            bs.DataSource = barangDAL.GetAll();
+            listBarang = barangDAL.GetAll().ToList();
+            bs.DataSource = listBarang;
             TambahBinding();
             InisialisasiAwal();
 
@@ -82,6 +84,7 @@ namespace POSApp
                     myBtn.Enabled = true;
                 }
             }
+            txtSearch.Enabled = true;
             btnSave.Enabled = false;
         }
 
@@ -204,6 +207,28 @@ namespace POSApp
         {
             currBarang = (Barang)bs.Current;
             InisialisasiEdit();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            bs.DataSource = from b in listBarang
+                            where b.Nama.Contains(txtSearch.Text)
+                            select b;
+
+
+            //listBarang.Where(b=>b.Nama.Contains(txtSearch.Text))
+        }
+
+        private void dgvBarang_DoubleClick(object sender, EventArgs e)
+        {
+            Barang currBarang = (Barang)bs.Current;
+
+            FormNotaPembelian.Instance().TxtKodeBarang.Text = currBarang.KodeBarang;
+            FormNotaPembelian.Instance().TxtHargaJual.Text = string.Format("{0:N0}",currBarang.HargaJual);
+            FormNotaPembelian.Instance().TxtNamaBarang.Text = currBarang.Nama;
+            FormNotaPembelian.Instance().TxtJumlah.Focus();
+
+            this.Close();
         }
     }
 }

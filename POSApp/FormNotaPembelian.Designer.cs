@@ -36,8 +36,8 @@
             this.btnShowPemasok = new System.Windows.Forms.Button();
             this.txtTelp = new System.Windows.Forms.TextBox();
             this.txtAlamat = new System.Windows.Forms.TextBox();
-            this.txtNamaPelanggan = new System.Windows.Forms.TextBox();
-            this.txtKodePelanggan = new System.Windows.Forms.TextBox();
+            this.txtNamaPemasok = new System.Windows.Forms.TextBox();
+            this.txtKodePemasok = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssKeterangan = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgvPembelian = new System.Windows.Forms.DataGridView();
-            this.txtStok = new System.Windows.Forms.TextBox();
+            this.txtJumlah = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtHargaJual = new System.Windows.Forms.TextBox();
             this.txtNamaBarang = new System.Windows.Forms.TextBox();
@@ -108,8 +108,8 @@
             this.groupBox1.Controls.Add(this.btnShowPemasok);
             this.groupBox1.Controls.Add(this.txtTelp);
             this.groupBox1.Controls.Add(this.txtAlamat);
-            this.groupBox1.Controls.Add(this.txtNamaPelanggan);
-            this.groupBox1.Controls.Add(this.txtKodePelanggan);
+            this.groupBox1.Controls.Add(this.txtNamaPemasok);
+            this.groupBox1.Controls.Add(this.txtKodePemasok);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label5);
@@ -129,6 +129,7 @@
             this.btnShowPemasok.TabIndex = 17;
             this.btnShowPemasok.Text = "....";
             this.btnShowPemasok.UseVisualStyleBackColor = true;
+            this.btnShowPemasok.Click += new System.EventHandler(this.btnShowPemasok_Click);
             // 
             // txtTelp
             // 
@@ -144,19 +145,19 @@
             this.txtAlamat.Size = new System.Drawing.Size(230, 20);
             this.txtAlamat.TabIndex = 15;
             // 
-            // txtNamaPelanggan
+            // txtNamaPemasok
             // 
-            this.txtNamaPelanggan.Location = new System.Drawing.Point(85, 56);
-            this.txtNamaPelanggan.Name = "txtNamaPelanggan";
-            this.txtNamaPelanggan.Size = new System.Drawing.Size(203, 20);
-            this.txtNamaPelanggan.TabIndex = 14;
+            this.txtNamaPemasok.Location = new System.Drawing.Point(85, 56);
+            this.txtNamaPemasok.Name = "txtNamaPemasok";
+            this.txtNamaPemasok.Size = new System.Drawing.Size(203, 20);
+            this.txtNamaPemasok.TabIndex = 14;
             // 
-            // txtKodePelanggan
+            // txtKodePemasok
             // 
-            this.txtKodePelanggan.Location = new System.Drawing.Point(85, 27);
-            this.txtKodePelanggan.Name = "txtKodePelanggan";
-            this.txtKodePelanggan.Size = new System.Drawing.Size(100, 20);
-            this.txtKodePelanggan.TabIndex = 13;
+            this.txtKodePemasok.Location = new System.Drawing.Point(85, 27);
+            this.txtKodePemasok.Name = "txtKodePemasok";
+            this.txtKodePemasok.Size = new System.Drawing.Size(100, 20);
+            this.txtKodePemasok.TabIndex = 13;
             // 
             // label4
             // 
@@ -218,13 +219,14 @@
             this.dgvPembelian.Size = new System.Drawing.Size(731, 169);
             this.dgvPembelian.TabIndex = 6;
             // 
-            // txtStok
+            // txtJumlah
             // 
-            this.txtStok.Location = new System.Drawing.Point(338, 171);
-            this.txtStok.Name = "txtStok";
-            this.txtStok.Size = new System.Drawing.Size(75, 20);
-            this.txtStok.TabIndex = 47;
-            this.txtStok.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtJumlah.Location = new System.Drawing.Point(338, 171);
+            this.txtJumlah.Name = "txtJumlah";
+            this.txtJumlah.Size = new System.Drawing.Size(75, 20);
+            this.txtJumlah.TabIndex = 47;
+            this.txtJumlah.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtJumlah.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJumlah_KeyDown);
             // 
             // label7
             // 
@@ -256,6 +258,7 @@
             this.txtKodeBarang.Name = "txtKodeBarang";
             this.txtKodeBarang.Size = new System.Drawing.Size(92, 20);
             this.txtKodeBarang.TabIndex = 42;
+            this.txtKodeBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKodeBarang_KeyDown);
             // 
             // label8
             // 
@@ -407,7 +410,7 @@
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtStok);
+            this.Controls.Add(this.txtJumlah);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtHargaJual);
             this.Controls.Add(this.txtNamaBarang);
@@ -445,8 +448,8 @@
         private System.Windows.Forms.Button btnShowPemasok;
         private System.Windows.Forms.TextBox txtTelp;
         private System.Windows.Forms.TextBox txtAlamat;
-        private System.Windows.Forms.TextBox txtNamaPelanggan;
-        private System.Windows.Forms.TextBox txtKodePelanggan;
+        private System.Windows.Forms.TextBox txtNamaPemasok;
+        private System.Windows.Forms.TextBox txtKodePemasok;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
@@ -454,7 +457,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tssKeterangan;
         private System.Windows.Forms.DataGridView dgvPembelian;
-        private System.Windows.Forms.TextBox txtStok;
+        private System.Windows.Forms.TextBox txtJumlah;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtHargaJual;
         private System.Windows.Forms.TextBox txtNamaBarang;

@@ -34,27 +34,94 @@ namespace POSApp
         }
 
         #region exposed property
-
-        public TextBox TxtKodePelanggan
+        public DateTimePicker TxtTanggal
         {
             get
             {
-                return txtKodePelanggan;
+                return txtTanggal;
             }
             set
             {
-                txtKodePelanggan = value;
+                txtTanggal = value;
             }
         }
-        public TextBox TxtNamaPelanggan
+        public TextBox TxtNoNota
         {
             get
             {
-                return txtNamaPelanggan;
+                return txtNoNota;
             }
             set
             {
-                txtNamaPelanggan = value;
+                txtNoNota = value;
+            }
+        }
+
+        public TextBox TxtKodeBarang
+        {
+            get
+            {
+                return txtKodeBarang;
+            }
+            set
+            {
+                txtKodeBarang = value;
+            }
+        }
+        public TextBox TxtNamaBarang
+        {
+            get
+            {
+                return txtNamaBarang;
+            }
+            set
+            {
+                txtNamaBarang = value;
+            }
+        }
+        public TextBox TxtHargaJual
+        {
+            get
+            {
+                return txtHargaJual;
+            }
+            set
+            {
+                txtHargaJual = value;
+            }
+        }
+        public TextBox TxtJumlah
+        {
+            get
+            {
+                return txtJumlah;
+            }
+            set
+            {
+                txtJumlah = value;
+            }
+        }
+
+        public TextBox TxtKodePemasok
+        {
+            get
+            {
+                return txtKodePemasok;
+            }
+            set
+            {
+                txtKodePemasok = value;
+            }
+        }
+        public TextBox TxtNamaPemasok
+        {
+            get
+            {
+                return txtNamaPemasok;
+            }
+            set
+            {
+                txtNamaPemasok = value;
             }
         }
         public TextBox TxtAlamat
@@ -108,7 +175,29 @@ namespace POSApp
 
         private void FormNotaPembelian_Load(object sender, EventArgs e)
         {
-            
+            BuatNota();
+        }
+
+        private void btnShowPemasok_Click(object sender, EventArgs e)
+        {
+            FormPemasok.Instance().Show();
+        }
+
+        private void txtKodeBarang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter)
+            {
+                FormBarang.Instance().Show();
+            }
+        }
+
+        private void txtJumlah_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter)
+            {
+                var subtotal = Convert.ToDecimal(txtJumlah.Text) * Convert.ToDecimal(txtHargaJual.Text);
+                txtSubtotal.Text = string.Format("{0:N0}", subtotal);
+            }
         }
     }
 }

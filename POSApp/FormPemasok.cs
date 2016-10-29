@@ -255,6 +255,25 @@ namespace POSApp
             bs.DataSource = listPemasok.Where(p => p.Nama.Contains(txtSearch.Text)).ToList();
         }
 
-       
+        private void dgvPemasok_DoubleClick(object sender, EventArgs e)
+        {
+            Pemasok currPemasok = (Pemasok)bs.Current;
+            FormNotaPembelian.Instance().TxtKodePemasok.Text = currPemasok.KodePemasok.ToString();
+            FormNotaPembelian.Instance().TxtNamaPemasok.Text = currPemasok.Nama;
+            FormNotaPembelian.Instance().TxtAlamat.Text = currPemasok.Alamat;
+            FormNotaPembelian.Instance().TxtTelp.Text = currPemasok.Telp;
+
+            //update nota pembelian
+            NotaPembelianDAL notaBeliDAL = new NotaPembelianDAL();
+            var editNotaBeli = new NotaPembelian
+            {
+                KodePemasok = currPemasok.KodePemasok,
+                Tanggal = FormNotaPembelian.Instance().TxtTanggal.Value,
+                KodeNotaBeli = Convert.ToInt32(FormNotaPembelian.Instance().TxtNoNota.Text)
+            };
+            notaBeliDAL.Update(editNotaBeli);
+
+            this.Close();
+        }
     }
 }
