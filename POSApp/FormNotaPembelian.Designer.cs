@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtTanggal = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnShowPemasok = new System.Windows.Forms.Button();
             this.txtTelp = new System.Windows.Forms.TextBox();
             this.txtAlamat = new System.Windows.Forms.TextBox();
             this.txtNamaPelanggan = new System.Windows.Forms.TextBox();
@@ -41,7 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssKeterangan = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgvPembelian = new System.Windows.Forms.DataGridView();
@@ -105,7 +105,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnShowPemasok);
             this.groupBox1.Controls.Add(this.txtTelp);
             this.groupBox1.Controls.Add(this.txtAlamat);
             this.groupBox1.Controls.Add(this.txtNamaPelanggan);
@@ -120,6 +120,15 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pemasok";
+            // 
+            // btnShowPemasok
+            // 
+            this.btnShowPemasok.Location = new System.Drawing.Point(190, 25);
+            this.btnShowPemasok.Name = "btnShowPemasok";
+            this.btnShowPemasok.Size = new System.Drawing.Size(27, 23);
+            this.btnShowPemasok.TabIndex = 17;
+            this.btnShowPemasok.Text = "....";
+            this.btnShowPemasok.UseVisualStyleBackColor = true;
             // 
             // txtTelp
             // 
@@ -184,15 +193,6 @@
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Kode :";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(191, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "....";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -424,6 +424,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormNotaPembelian";
             this.Text = "FormNotaPembelian";
+            this.Load += new System.EventHandler(this.FormNotaPembelian_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -441,7 +442,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker txtTanggal;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnShowPemasok;
         private System.Windows.Forms.TextBox txtTelp;
         private System.Windows.Forms.TextBox txtAlamat;
         private System.Windows.Forms.TextBox txtNamaPelanggan;
