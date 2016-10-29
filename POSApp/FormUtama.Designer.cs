@@ -65,6 +65,7 @@
             this.masterBarangToolStripMenuItem.Name = "masterBarangToolStripMenuItem";
             this.masterBarangToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.masterBarangToolStripMenuItem.Text = "Master Barang";
+            this.masterBarangToolStripMenuItem.Click += new System.EventHandler(this.masterBarangToolStripMenuItem_Click);
             // 
             // masterPelangganToolStripMenuItem
             // 
@@ -77,6 +78,7 @@
             this.masterPemasokToolStripMenuItem.Name = "masterPemasokToolStripMenuItem";
             this.masterPemasokToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.masterPemasokToolStripMenuItem.Text = "Master Pemasok";
+            this.masterPemasokToolStripMenuItem.Click += new System.EventHandler(this.masterPemasokToolStripMenuItem_Click);
             // 
             // transaksiToolStripMenuItem
             // 
@@ -91,6 +93,7 @@
             this.transaksiPembelianToolStripMenuItem.Name = "transaksiPembelianToolStripMenuItem";
             this.transaksiPembelianToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.transaksiPembelianToolStripMenuItem.Text = "Transaksi Pembelian";
+            this.transaksiPembelianToolStripMenuItem.Click += new System.EventHandler(this.transaksiPembelianToolStripMenuItem_Click);
             // 
             // FormUtama
             // 

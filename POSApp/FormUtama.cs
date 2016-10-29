@@ -25,5 +25,20 @@ namespace POSApp
         {
             InitializeComponent();
         }
+
+        private void masterBarangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormBarang.Instance().Show();
+        }
+
+        private void masterPemasokToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPemasok.Instance().Show();
+        }
+
+        private void transaksiPembelianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormNotaPembelian.Instance().Show();
+        }
     }
 }
