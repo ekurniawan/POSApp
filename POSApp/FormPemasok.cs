@@ -19,6 +19,7 @@ namespace POSApp
         private BindingSource bs;
         private bool isNew = false;
         private Pemasok editPemasok;
+        private List<Pemasok> listPemasok;
 
         public FormPemasok()
         {
@@ -44,7 +45,8 @@ namespace POSApp
             PemasokDAL pemasokDAL = new PemasokDAL();
 
             bs = new BindingSource();
-            bs.DataSource = pemasokDAL.GetAll();
+            listPemasok = pemasokDAL.GetAll().ToList();
+            bs.DataSource = listPemasok;
             TambahBinding();
             InisialisasiAwal();
 
@@ -68,6 +70,7 @@ namespace POSApp
                 }
             }
 
+            txtSearch.Enabled = true;
             btnSave.Enabled = false;
         }
 
@@ -236,6 +239,11 @@ namespace POSApp
             }
         }
 
-      
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            bs.DataSource = listPemasok.Where(p => p.Nama.Contains(txtSearch.Text)).ToList();
+        }
+
+       
     }
 }

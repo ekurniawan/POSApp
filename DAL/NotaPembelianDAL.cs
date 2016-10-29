@@ -25,6 +25,7 @@ namespace DAL
             {
                 string strSql = @"insert into NotaPembelian(KodePemasok,Tanggal) 
                               values(@KodePemasok,@Tanggal);select @@identity;";
+
                 var param = new
                 {
                     KodePemasok = notaBeli.KodePemasok,

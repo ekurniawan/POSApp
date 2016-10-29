@@ -47,6 +47,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssKeterangan = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPemasok)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -55,9 +57,9 @@
             // 
             this.dgvPemasok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPemasok.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvPemasok.Location = new System.Drawing.Point(0, 177);
+            this.dgvPemasok.Location = new System.Drawing.Point(0, 189);
             this.dgvPemasok.Name = "dgvPemasok";
-            this.dgvPemasok.Size = new System.Drawing.Size(461, 188);
+            this.dgvPemasok.Size = new System.Drawing.Size(494, 176);
             this.dgvPemasok.TabIndex = 0;
             // 
             // label1
@@ -210,7 +212,7 @@
             this.tssKeterangan});
             this.statusStrip1.Location = new System.Drawing.Point(0, 365);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(461, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(494, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -220,11 +222,30 @@
             this.tssKeterangan.Size = new System.Drawing.Size(118, 17);
             this.tssKeterangan.Text = "toolStripStatusLabel1";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 167);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(135, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Masukan Nama Pemasok :";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(153, 164);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(270, 20);
+            this.txtSearch.TabIndex = 19;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
             // FormPemasok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 387);
+            this.ClientSize = new System.Drawing.Size(494, 387);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnSave);
@@ -275,5 +296,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tssKeterangan;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }
