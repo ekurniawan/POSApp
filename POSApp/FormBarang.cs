@@ -165,6 +165,28 @@ namespace POSApp
                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
             }
+            else
+            {
+                try
+                {
+                    currBarang.Nama = txtNama.Text;
+                    currBarang.HargaBeli = Convert.ToDecimal(txtHargaBeli.Text);
+                    currBarang.HargaJual = Convert.ToDecimal(txtHargaJual.Text);
+                    currBarang.Stok = Convert.ToInt32(txtStok.Text);
+
+                    barangDAL.Update(currBarang);
+                    InisialisasiAwal();
+                    TambahBinding();
+
+                    tssKeterangan.Text = string.Format("Berhasil mengedit data {0}",
+                       currBarang.Nama);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error : " + ex.Message, "Keterangan", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

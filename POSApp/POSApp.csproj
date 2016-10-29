@@ -33,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,11 +55,23 @@
     <Compile Include="FormBarang.Designer.cs">
       <DependentUpon>FormBarang.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPelanggan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPelanggan.Designer.cs">
+      <DependentUpon>FormPelanggan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPemasok.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormPemasok.Designer.cs">
       <DependentUpon>FormPemasok.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportBarang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportBarang.Designer.cs">
+      <DependentUpon>FormReportBarang.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUtama.cs">
       <SubType>Form</SubType>
@@ -70,8 +85,14 @@
     <EmbeddedResource Include="FormBarang.resx">
       <DependentUpon>FormBarang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPelanggan.resx">
+      <DependentUpon>FormPelanggan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPemasok.resx">
       <DependentUpon>FormPemasok.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportBarang.resx">
+      <DependentUpon>FormReportBarang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -82,6 +103,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\ReportBarang.rdlc" />
+    <None Include="Properties\DataSources\BO.Barang.datasource" />
+    <None Include="Properties\DataSources\DAL.PemasokDAL.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
