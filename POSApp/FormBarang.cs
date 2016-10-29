@@ -16,6 +16,17 @@ namespace POSApp
 {
     public partial class FormBarang : Form
     {
+        #region singleton
+        private static FormBarang _instance;
+        public static FormBarang Instance()
+        {
+            if (_instance == null)
+                _instance = new FormBarang();
+
+            return _instance;
+        }
+        #endregion
+
         private BindingSource bs;
         private bool isNew = false;
         private Barang currBarang = null;
@@ -34,9 +45,9 @@ namespace POSApp
             txtKode.DataBindings.Add("Text", bs, "KodeBarang");
             txtNama.DataBindings.Add("Text", bs, "Nama");
             txtHargaBeli.DataBindings.Add("Text", bs, "HargaBeli",
-                true,DataSourceUpdateMode.Never,null,"N0");
-            txtHargaJual.DataBindings.Add("Text", bs, "HargaJual",true,
-                DataSourceUpdateMode.Never,null,"N0");
+                true, DataSourceUpdateMode.Never, null, "N0");
+            txtHargaJual.DataBindings.Add("Text", bs, "HargaJual", true,
+                DataSourceUpdateMode.Never, null, "N0");
             txtStok.DataBindings.Add("Text", bs, "Stok");
         }
         #endregion
@@ -93,11 +104,11 @@ namespace POSApp
                 }
             }
 
-           
+
             btnSave.Enabled = true;
             txtKode.Focus();
-           
-            isNew = true; 
+
+            isNew = true;
         }
 
         private void InisialisasiEdit()
@@ -138,7 +149,7 @@ namespace POSApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             BarangDAL barangDAL = new BarangDAL();
-            if(isNew)
+            if (isNew)
             {
                 var newBarang = new Barang
                 {
@@ -156,7 +167,7 @@ namespace POSApp
                     InisialisasiAwal();
                     TambahBinding();
 
-                    tssKeterangan.Text = string.Format("Berhasil menambah data {0}", 
+                    tssKeterangan.Text = string.Format("Berhasil menambah data {0}",
                         newBarang.Nama);
                 }
                 catch (Exception ex)

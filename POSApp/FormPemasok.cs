@@ -16,6 +16,17 @@ namespace POSApp
 {
     public partial class FormPemasok : Form
     {
+        #region singleton
+        private static FormPemasok _instance;
+        public static FormPemasok Instance()
+        {
+            if (_instance == null)
+                _instance = new FormPemasok();
+
+            return _instance;
+        }
+        #endregion
+
         private BindingSource bs;
         private bool isNew = false;
         private Pemasok editPemasok;

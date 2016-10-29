@@ -103,6 +103,9 @@
     <EmbeddedResource Include="FormReportBarang.resx">
       <DependentUpon>FormReportBarang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUtama.resx">
+      <DependentUpon>FormUtama.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

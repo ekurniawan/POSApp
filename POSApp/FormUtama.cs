@@ -12,6 +12,15 @@ namespace POSApp
 {
     public partial class FormUtama : Form
     {
+        private static FormUtama _instance;
+        public static FormUtama Instance()
+        {
+            if (_instance == null)
+                _instance = new FormUtama();
+
+            return _instance;
+        }
+
         public FormUtama()
         {
             InitializeComponent();

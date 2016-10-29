@@ -12,6 +12,17 @@ namespace POSApp
 {
     public partial class FormNotaPembelian : Form
     {
+
+        #region singleton
+        private static FormNotaPembelian _instance;
+        public static FormNotaPembelian Instance()
+        {
+            if (_instance == null)
+                _instance = new FormNotaPembelian();
+
+            return _instance;
+        }
+        #endregion
         public FormNotaPembelian()
         {
             InitializeComponent();
